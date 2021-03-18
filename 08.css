@@ -1,0 +1,19 @@
+/*Links em geral*/
+a{
+    color: orangered;
+    text-decoration: none; /*Tira o sublinhado do link*/
+}
+
+/*Link já visitados*/
+a:visited{
+    /*color: green;*/
+    filter: brightness(50%); /*Cor 50% mais escura*/
+}
+
+/*Link enquanto o mouse está em cima dele*/
+
+a:hover{
+    /*color: orange;*/
+    filter: brightness(150%); /*Cor 50% mais brilhante*/
+    text-decoration: underline;  /*Volta o sublinhado*/
+}
