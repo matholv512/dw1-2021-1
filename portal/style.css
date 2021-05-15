@@ -68,7 +68,7 @@ nav {
     flex-direction: row; /* Os filhos ficarão em linha */
 }
 
-section {
+main, aside {
     background-color: var(--cor-texto-claro);
     padding: 24px;
     margin-bottom: 20px;
@@ -79,21 +79,21 @@ section {
     flex-grow: 1;   /* 1 unidade de largura (padrão) */
 }
 
-#principal {
+main {
     width: 75%;
 }
 
-#secundario {
+aside {
     margin-left: 20px;
     background-color: var(--cor-fundo-escura);
     width: 25%;
 }
 
-section article {   /* article que estão de dentro de uma section */
+main article, aside article {   /* article que estão de dentro de main ou aside */
     margin: 24px 0;     /* 24px top/bottom, 0 left/right */
 }
 
-section > h1 {          /* Apenas os h1 que são filhos diretos de section */
+main > h1, aside > h1 {          /* Apenas os h1 que são filhos diretos de main ou aside */
     /* Deixar o texto em maiúsculas */
     text-transform: uppercase;
     color: var(--cor-secundaria);
@@ -111,52 +111,75 @@ article > p {
     color: var(--cor-texto-escura);
 }
 
-article > h2{
+article > h2 {
     font-size: 0.8rem;
-    text-transform: uppercase; /*Todas as letras em maiúscula*/
+    text-transform: uppercase; /* Todas as letras em maiúsculas */
 }
 
-.destaque{
+.destaque {
     background-color: var(--cor-secundaria-clara);
     padding: 24px;
-    border-radius: 4px; /*Bordas LEVEMENTE arredondadas*/
-    
+    border-radius: 4px;  /* Bordas LEVEMENTE arredondadas */
 }
 
-.destaque p{
+.destaque p {
     color: #000000;
     font-size: 1.5rem;
-
-    
 }
 
-.destaque > h1 > a{
+.destaque > h1 > a {
     font-size: 2.5rem;
 }
 
-.destaque > h2{
+.destaque > h2 {
     font-size: 1rem;
 }
 
-.destaque img{
+.destaque img {
     width: 450px;
-    display: block;
     margin-right: 24px;
     border-radius: 4px;
+}
+
+.foto-texto {
+    display: flex;
+    flex-direction: row; /* Os filhos ficarão em linha */
+}
+
+aside > article > img {
+    display: block;
+    /* margin auto à esquerda e à direita centraliza o elemento quando este é
+       display: block */
+    margin: 0 auto; 
+}
+
+aside > article > h1 > a {
+    font-size: 1rem;
+    color: #000000;
+}
+
+aside > article > h1{
+    margin-top: 6px;
+}
+
+footer{
+    background-color: var(--cor-primaria);
+    padding: 24px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;/*Dá espaço automaticamente entre os itens de um flexbox*/
     
 }
 
-.foto-texto{
-    display: flex;
-    flex-direction: row; /*Os filhos ficarão em linha*/
+footer a {
+    color:#FFFFFF;
+
 }
 
-#secundario > aside > img{
-    display: block;
-    margin: 0 auto; /*Margin auto à esquerda e à direita centralizada o elemento quando este é display:block*/
-}
-
-#secundario > aside > h1 > a{
-    font-size: 1rem;
-    color: #000000;
+footer ul li{
+    display: inline-block; /*Coloca os itens de uma lista na horizontal*/
+    padding: 0 12px;
+    border-right: 1px solid #ffffff;
+    
 }
