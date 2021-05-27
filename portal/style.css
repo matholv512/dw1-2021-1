@@ -28,7 +28,9 @@
     /* Família de fontes da web (webfonts) */
     font-family: Raleway, Calibri, Arial, sans;
     font-size: 16px;
+    /* Faz com que bordas e margens sejam considerados no tamanho total do elemento */
     box-sizing: border-box;
+    
 }
 html {                  /* Tamanho de fonte padrão do documento */
     font-size: 16px;
@@ -45,42 +47,37 @@ a:hover {   /* Mouse passando em cima do link */
     text-decoration: underline; /* Volta o sublinhado */
 }
 
-#social{
-    background-color: transparent; /*Tira cor de fundo*/
+header {
+    background-color: var(--cor-primaria);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#social {
+    background-color: transparent;  /* Tira a cor de fundo */
     display: flex;
     align-items: center;
 }
 
-#social img{
+#social img {
     width: 32px;
 }
 
-#social a{
+#social a {
     color: #FFFFFF;
     text-decoration: none;
     display: flex;
     align-items: center;
 }
 
-#social a span{
+#social a span {
     margin-left: 6px;
-    display: none;
+    display: none; /* Esconder o texto dos links */
 }
 
-#social a:hover span{
-    display: inline;  /*Mostra novamente o texto ao passar com o mouse em cima*/
-}
-
-#social span{
-    margin-left: 6px;
-    display: none; /*Esconder o texto dos links*/
-}
-
-header {
-    background-color: var(--cor-primaria);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
+#social a:hover span {
+    display: inline;  /* Mostra novamente o texto ao passar o mouse */  
 }
 
 nav ul li {
@@ -93,25 +90,63 @@ nav {
     color: var(--cor-texto-claro);             /* Cor do texto */
 }
 
-#menu{
+#menu {
     padding: 0 20px;
 }
 
-#menu li{
+#menu li {
     margin: 10px 0;
 }
 
-#menu a{
+#menu a {
     height: 100%;
     padding: 10px 20px;
-    color: #ffffff;
+    color: #FFFFFF;
     transition: 300ms;
     background-color: var(--cor-secundaria);
 }
 
-#menu a:hover{
-    filter: brightness(0.8); /*Diminui o brilho em 20%, deixando mais escuro*/
+#menu a:hover {
+    filter: brightness(0.8); /* Diminui o brilho em 20%, deixando mais escuro */
     text-decoration: none;
+}
+
+#menu-contraido {
+    display: inline-block;
+    position: relative;
+}
+
+#menu-contraido input, #menu-contraido span {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+#menu-contraido input {
+    z-index: 100; /* Traz o input para cima */ 
+    opacity: 0; /* Esconde o input */
+    display: none;  
+}
+
+#menu-contraido span {
+    display: block;
+    background-color: var(--cor-primaria);
+    border-radius: 4px;
+    border: 2px solid #FFFFFF;
+    background-image: url('img/menu-icon-48x48.png');
+    background-size: 40px 40px;
+    background-position: center center;
+    cursor: pointer; /* Cursor de mãozinha */
+    display: none;
+}
+
+/* Seletor ~: seleciona o próximo elemento (irmão) */
+#menu-contraido input:checked ~ span {
+    /* Troca a imagem */
+    background-image: url('img/close-icon-48x48.png');
 }
 
 #content {
@@ -194,21 +229,23 @@ article > h2 {
     width: 450px;
     margin-right: 24px;
     border-radius: 4px;
-    max-width: 100%; /*Largura máxima limitada à largura do pai.*/
+    /* Largura máxima limitada à largura do pai */
+    max-width: 100%;
 }
 
 .foto-texto {
     display: flex;
-    flex-direction: row; /* Os filhos ficarão em linha */
+    flex-direction: row; /* Os filhos ficarão em linha, na horizontal */
 }
 
 aside > article > img {
     display: block;
     /* margin auto à esquerda e à direita centraliza o elemento quando este é
        display: block */
-    margin: 0 auto; 
-    border-radius: 4p; /*Borda arredondada*/
-    max-width: 100%; /*Largura máxima é 100% da largura */
+    margin: 0 auto;
+    border-radius: 4px; /* Borda arredondada */ 
+    /* Largura máxima é 100% da largura do pai */
+    max-width: 100%;
 }
 
 aside > article > h1 > a {
@@ -216,105 +253,123 @@ aside > article > h1 > a {
     color: #000000;
 }
 
-aside > article > h1{
+aside > article > h1 {
     margin-top: 6px;
 }
 
-footer{
+footer {
     background-color: var(--cor-primaria);
     padding: 24px;
     color: #ffffff;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;/*Dá espaço automaticamente entre os itens de um flexbox*/
-    
+    /* Dá espaço automaticamente entre os itens de um flexbox */
+    justify-content: space-around;
 }
 
 footer a {
-    color:#FFFFFF;
-
-}
-
-footer ul li{
-    display: inline-block; /*Coloca os itens de uma lista na horizontal*/
-    padding: 0 12px;
-    border-right: 2px solid #ffffff;
+    color: #ffffff;
     
 }
-/*Tirar a borda direita do último li*/
-footer ul li:last-child{
+
+footer ul li {
+    display: inline-block;  /* Coloca os itens de uma lista na horizontal */
+    padding: 0 12px;
+    border-right: 2px solid #ffffff;
+}
+
+/* Tirar a borda direita do último li */
+footer ul li:last-child {
     border-right: none;
 }
 
-
-footer > img{
+footer img {
     width: 200px;
     height: 100%;
 }
 
-/*Regras especificas de tela*/
-@media screen and (max-width: 1020px){
-    main{
+/* Regras para larguras específicas de tela */
+@media screen and (max-width: 1020px) {  /* Breakpoint (ponto de quebra) */
+    main {
         width: 60%;
     }
-
-    aside{
+    aside {
         width: 40%;
     }
-
     .foto-texto {
-        display: flex;
-        flex-direction: column; /* Os filhos ficarão em linha */
+        flex-direction: column; /* Os filhos ficarão em coluna, na vertical */
     }
-
     .destaque img {
         margin-right: 0;
         margin-bottom: 24px;
     }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
+    #menu {
+        min-height: 88px;
+    }
+    #menu ul {
+        margin-top: 50px;
+        margin-left: -18px;
+    }
+    #menu ul li {   /* Menu vertical */
+        display: block;
+        margin: 0;
+        padding: 12px 0;
+    }
+    #menu a {
+        width: 100%;    
+    }
+    #menu-contraido {
+        margin-top: 24px;
+        width: 100%;
+    }
+    #menu-contraido ul {
+        display: none;
+    }
+    /* Mostra o botão do menu */
+    #menu-contraido input, #menu-contraido span {
+        display: block;
+    }
+    #menu-contraido input:checked ~ ul {
+        display: block;
+    }
+
     #content {
         flex-direction: column; /* Os filhos ficarão em coluna, na vertical */
     }
-
-    main{
+    main {
         width: 100%;
-        max-width: 100%;
     }
-
-    aside{
+    aside {
         margin-left: 0;
         width: 100%;
     }
-
-    aside > article > h1{
+    aside > article > h1 {
         text-align: center;
     }
-
-    .destaque img{
-        /*Centralizar a imagem*/
+    .destaque img {
+        /* Centralizar a imagem */
         margin-left: auto;
         margin-right: auto;
     }
-
-    footer{
+    footer {
         flex-direction: column;
     }
-
-    footer > *{ /*Todos os filhos DIRETOS de footer*/
+    footer > * {    /* Todos os filhos DIRETOS de footer */
         margin-bottom: 12px;
     }
-
-    footer ul li:first-child{ /*Só o primeiro (first-chield) li */
+    footer ul li:first-child {  /* Só o primeiro (first-child) li */
         padding-left: 0;
     }
-
-    footer adress{
+    footer address {
         text-align: right;
     }
 }
 
-@media screen and (max-width: 640px){
-    /**/
+@media screen and (max-width: 640px) {
+    /*
+        A FAZER: colocar o logo principal e os ícones de redes sociais em coluna
+    */
 }
